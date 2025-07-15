@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abdullah Soomro | Software Engineer</title>
+    <meta name="description"
+        content="Portfolio of Abdullah Soomro, Software Engineer. Projects, skills, resume, and contact info." />
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-papmQv7Qn1Q6QwQn1Q6QwQn1Q6QwQn1Q6QwQn1Q6QwQn1Q6QwQn1Q6QwQn1Q6QwQn1Q6QwQn1Q6QwQn1Q6Qw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --primary: #06b6d4;
+            --primary-glow: #22d3ee;
+            --bg: #0a1124;
+            --bg-gradient: linear-gradient(120deg, #0a1124 60%, #1e293b 100%);
+            --bg-light: #1e293b;
+            --text: #f1f5f9;
+            --card: #16213e;
+            --shadow: 0 4px 24px rgba(6, 182, 212, 0.18);
+            --glow: 0 0 16px 2px #06b6d4, 0 0 32px 4px #22d3ee44;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 17, 36, 0.97);
+            box-shadow: 0 2px 8px rgba(6, 182, 212, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 1.5px solid #1e293b;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #06b6d4aa;
+            filter: drop-shadow(0 0 8px #22d3ee55);
+            animation: floatLogo 2.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatLogo {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-6px);
+            }
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--primary-glow);
+            border-radius: 2px;
+            transition: width 0.3s;
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            box-shadow: var(--glow);
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary-glow);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 1rem 2rem 1rem;
+            background: linear-gradient(120deg, #0a1124 60%, #06b6d4 100%);
+            animation: fadeIn 1.2s;
+            box-shadow: 0 8px 32px #06b6d422;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-glow);
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-shadow: 0 2px 16px #22d3ee55;
+            animation: fadeInDown 1.2s;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            opacity: 0.85;
+            animation: fadeIn 1.6s;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            color: #bae6fd;
+            font-size: 1.1rem;
+            animation: fadeIn 1.8s;
+        }
+
+        .hero .hero-btn {
+            background: var(--primary);
+            color: var(--bg);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: var(--glow);
+            transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            margin-top: 1rem;
+            display: inline-block;
+            animation: fadeIn 2s;
+        }
+
+        .hero .hero-btn:hover {
+            background: #0891b2;
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 24px 4px #22d3ee99;
+        }
+
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 2rem 1.5rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        h2.section-title {
+            color: var(--primary-glow);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 0 2px 12px #22d3ee33;
+            letter-spacing: 1px;
+            animation: fadeInDown 1.2s;
+        }
+
+        /* About & Skills */
+        .about {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 1.2s;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-badge {
+            background: var(--bg-light);
+            color: var(--primary-glow);
+            border: 1.5px solid var(--primary-glow);
+            border-radius: 999px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            box-shadow: 0 0 8px 1px #22d3ee33;
+            animation: fadeIn 1.4s;
+        }
+
+        .skill-badge:hover {
+            background: var(--primary-glow);
+            color: var(--bg);
+            transform: scale(1.08);
+            box-shadow: 0 0 24px 4px #22d3ee99;
+        }
+
+        /* Projects, Experience, Education */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 700px) {
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .project-card {
+            background: var(--card);
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            padding: 2rem 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s, border 0.2s;
+            position: relative;
+            overflow: hidden;
+            border: 1.5px solid transparent;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: cardFadeIn 1.2s forwards;
+            animation-delay: 0.2s;
+        }
+
+        section.visible .project-card {
+            opacity: 1;
+            transform: none;
+            animation: cardFadeIn 0.8s forwards;
+        }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 8px 32px #22d3ee99;
+            border-color: var(--primary-glow);
+        }
+
+        .project-title {
+            color: var(--primary-glow);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 8px #22d3ee33;
+        }
+
+        .project-desc {
+            color: #e0f2fe;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .project-link {
+            color: var(--primary-glow);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed var(--primary-glow);
+            transition: color 0.2s, border 0.2s;
+            box-shadow: 0 0 8px #22d3ee33;
+        }
+
+        .project-link:hover {
+            color: #fff;
+            border-bottom: 1px solid #fff;
+            text-shadow: 0 0 8px #22d3ee99;
+        }
+
+        /* Resume */
+        .resume-btn {
+            display: inline-block;
+            background: var(--primary-glow);
+            color: var(--bg);
+            padding: 0.7rem 2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            margin: 1.5rem auto 0 auto;
+            box-shadow: var(--glow);
+            transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .resume-btn:hover {
+            background: #0891b2;
+            color: #fff;
+            transform: scale(1.04);
+            box-shadow: 0 0 24px 4px #22d3ee99;
+        }
+
+        /* Contact */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .contact-list li {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-list a {
+            color: var(--primary-glow);
+            text-decoration: none;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 0 8px #22d3ee33;
+        }
+
+        .contact-list a:hover {
+            color: #fff;
+            text-shadow: 0 0 16px #22d3ee99;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem 1rem 1rem;
+            color: #94a3b8;
+            font-size: 1rem;
+            background: rgba(6, 182, 212, 0.04);
+            margin-top: 2rem;
+            border-top: 1.5px solid #1e293b;
+            text-shadow: 0 2px 8px #22d3ee22;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                padding: 0.7rem 0.5rem;
+            }
+
+            nav a {
+                margin: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 2.5rem 0.5rem 1.5rem 0.5rem;
+            }
+
+            .project-card {
+                padding: 1.2rem 0.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="sparkle-bg"
+        style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;"></canvas>
+    <header>
+        <div class="logo">Abdullah Soomro</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <section class="hero" id="hero">
+        <h1>Abdullah Soomro</h1>
+        <h2>Software Engineer</h2>
+        <p>I'm Abdullah Soomro, a passionate Software Engineering student from Karachi, currently studying at Muhammad
+            Ali Jinnah University. I love building scalable, user-friendly applications and exploring AI, Machine
+            Learning, and Full Stack Web Development. Always eager to learn, take on new challenges, and collaborate on
+            meaningful projects.</p>
+        <a href="#contact" class="hero-btn">Get In Touch</a>
+    </section>
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about">
+            <p>Hi! I am Abdullah Soomro, currently pursuing a Bachelor of Engineering in Software Engineering at
+                Mohammad Ali Jinnah University. My passion for technology and its transformative power fuels my drive to
+                innovate, solve problems, and continuously learn. I bring professional experience from a 9-month role as
+                a Customer Support Executive at IBEX, where I developed strong communication and problem-solving skills
+                by understanding and addressing user needs—skills I aim to carry into technical roles. Additionally, I
+                completed a frontend development internship at CodeAlpha, where I worked on building responsive user
+                interfaces using HTML, CSS, and JavaScript, further solidifying my foundation in web technologies. I am
+                especially passionate about AI, machine learning, and full-stack development, and I strive to challenge
+                myself by exploring new technologies, developing intelligent solutions, and building impactful web
+                applications. My goal is to contribute to meaningful projects that push the boundaries of innovation and
+                make a real-world difference.</p>
+        </div>
+    </section>
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills">
+            <span class="skill-badge"><i class="fa-brands fa-html5" style="color:#e34c26;"></i> HTML</span>
+            <span class="skill-badge"><i class="fa-brands fa-css3-alt" style="color:#1572b6;"></i> CSS</span>
+            <span class="skill-badge"><i class="fa-brands fa-js" style="color:#f7df1e;"></i> JavaScript</span>
+            <span class="skill-badge"><i class="fa-brands fa-react" style="color:#61dafb;"></i> React</span>
+            <span class="skill-badge"><i class="fa-brands fa-python" style="color:#3776ab;"></i> Python</span>
+            <span class="skill-badge"><i class="fa-solid fa-code" style="color:#6296cc;"></i> C++</span>
+            <span class="skill-badge"><i class="fa-solid fa-database" style="color:#4479a1;"></i> MySQL</span>
+        </div>
+    </section>
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-title">Frontend Development Intern – CodeAlpha</div>
+                <div class="project-desc">Focused on frontend development tasks using HTML, CSS, and JavaScript to build
+                    responsive web interfaces. Improved UI components and collaborated on design enhancements while
+                    using GitHub for version control. Gained hands-on experience in web development workflows and modern
+                    design practices.</div>
+            </div>
+            <div class="project-card">
+                <div class="project-title">Customer Service Executive – Ibex</div>
+                <div class="project-desc">Provided support for Jazz users in a high-volume call center, resolving
+                    technical and billing issues. Met performance goals such as first-call resolution and customer
+                    satisfaction through effective communication. Gained valuable experience in client handling, time
+                    management, and problem-solving.</div>
+            </div>
+        </div>
+    </section>
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-title">Bachelor of Engineering in Software Engineering</div>
+                <div class="project-desc">Muhammad Ali Jinnah University, Karachi<br>Currently pursuing a degree with a
+                    strong focus on full stack development, software architecture, and AI/ML concepts. Engaged in
+                    hands-on projects involving databases, web development, and machine learning. Actively building
+                    technical and problem-solving skills through coursework and personal projects.</div>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-title">Text Spam Detection System</div>
+                <div class="project-desc">Built a spam message classifier using Python and machine learning (NLP, Naive
+                    Bayes, Pandas, Scikit-learn).</div>
+                <a class="project-link"
+                    href="https://github.com/abdullahsoomro61873/Text-Spam-Detection-Machine-Learning-Artificial-Intelligence-"
+                    target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <div class="project-title">Aviation Database Management System</div>
+                <div class="project-desc">Designed and implemented a relational database using MySQL to manage flights,
+                    staff, and customer data.</div>
+                <a class="project-link"
+                    href="https://github.com/abdullahsoomro61873/MySQL-Database-Management-System-for-Air-Aviation-Company"
+                    target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <div class="project-title">Library Management System</div>
+                <div class="project-desc">Console-based C++ app to manage books, borrowers, due dates, and fines using
+                    OOP and file handling.</div>
+                <a class="project-link" href="https://github.com/abdullahsoomro61873/Library_Management_System_C-"
+                    target="_blank">View on GitHub</a>
+            </div>
+            <!-- Add more projects as needed -->
+        </div>
+    </section>
+    <section id="resume">
+        <h2 class="section-title">Resume</h2>
+        <div style="text-align:center;">
+            <a href="My_Resume.pdf" class="resume-btn" target="_blank">📄 View Resume</a>
+        </div>
+    </section>
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <ul class="contact-list">
+            <li><strong>Email:</strong> <a href="mailto:abdullahs61873@gmail.com">abdullahs61873@gmail.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:03022491673">0302-2491673</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/abdullahsoomro61873"
+                    target="_blank">linkedin.com/in/abdullahsoomro61873</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/abdullahsoomro61873"
+                    target="_blank">github.com/abdullahsoomro61873</a></li>
+            <li><strong>Location:</strong> <a href="https://www.google.com/maps/place/Karachi,+Pakistan" target="_blank"
+                    rel="noopener">Karachi, Pakistan</a></li>
+        </ul>
+    </section>
+    <footer>
+        <p>© 2025 Abdullah Soomro. All rights reserved.</p>
+    </footer>
+    <script>
+        // Smooth scroll and nav highlight
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        // Section entrance animation on scroll
+        function revealSections() {
+            document.querySelectorAll('section').forEach(sec => {
+                const rect = sec.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 80) {
+                    sec.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealSections);
+        window.addEventListener('DOMContentLoaded', revealSections);
+        // Nav active link highlight
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY + 120;
+            document.querySelectorAll('nav a').forEach(link => {
+                const section = document.querySelector(link.getAttribute('href'));
+                if (section && section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+
+        // Sparkle background effect
+        const canvas = document.getElementById('sparkle-bg');
+        const ctx = canvas.getContext('2d');
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        function resizeCanvas() {
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w;
+            canvas.height = h;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        // Sparkle properties
+        const SPARKLE_COUNT = Math.floor((w * h) / 3500);
+        const sparkles = Array.from({ length: SPARKLE_COUNT }, () => ({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 1.2 + 0.6,
+            alpha: Math.random() * 0.5 + 0.3,
+            dx: (Math.random() - 0.5) * 0.08,
+            dy: (Math.random() - 0.5) * 0.08,
+            tw: Math.random() * Math.PI * 2
+        }));
+        function drawSparkles() {
+            ctx.clearRect(0, 0, w, h);
+            for (const s of sparkles) {
+                s.tw += 0.04 + Math.random() * 0.01;
+                const twinkle = Math.sin(s.tw) * 0.3 + 0.7;
+                ctx.save();
+                ctx.globalAlpha = s.alpha * twinkle;
+                const grad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 3);
+                grad.addColorStop(0, '#fff');
+                grad.addColorStop(0.5, '#06b6d4');
+                grad.addColorStop(1, 'transparent');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r * (1.2 + Math.sin(s.tw) * 0.2), 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+                // Move
+                s.x += s.dx;
+                s.y += s.dy;
+                // Wrap around
+                if (s.x < 0) s.x = w;
+                if (s.x > w) s.x = 0;
+                if (s.y < 0) s.y = h;
+                if (s.y > h) s.y = 0;
+            }
+            requestAnimationFrame(drawSparkles);
+        }
+        drawSparkles();
+    </script>
+</body>
+
+</html>
